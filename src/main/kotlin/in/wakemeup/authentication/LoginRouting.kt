@@ -7,6 +7,7 @@ import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.post
 import io.ktor.util.logging.Logger
+import jdk.nashorn.internal.runtime.regexp.joni.Config.log
 
 @Location("/authenticate")
 class Authenticate {
@@ -17,8 +18,9 @@ class Authenticate {
   data class Logout(val user: User)
 }
 
-fun Route.userRouting(log: Logger) {
+fun Route.userRouting() {
   post<Authenticate.Login> { login ->
+    val log = call.application.environment.log
     val user = login.user
     log.info("Logging in user ${user.name}")
     val existingUser = users.firstOrNull { it.id == user.id }
@@ -33,6 +35,7 @@ fun Route.userRouting(log: Logger) {
     call.respond(HttpStatusCode.BadRequest)
   }
   post<Authenticate.Logout> { login ->
+    val log = call.application.environment.log
     val user = login.user
     log.info("Logging out user ${user.name}")
     val existingUser = users.firstOrNull { it.id == user.id }

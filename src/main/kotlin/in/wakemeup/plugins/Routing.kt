@@ -1,6 +1,7 @@
 package `in`.wakemeup.plugins
 
 import `in`.wakemeup.authentication.userRouting
+import `in`.wakemeup.sockets.webSocketRouting
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -23,7 +24,8 @@ fun Application.configureRouting() {
     }
 
     route("/wakemeup/v1") {
-      userRouting(log)
+      userRouting()
+      webSocketRouting()
     }
   }
 }

@@ -1,8 +1,10 @@
 package `in`.wakemeup.plugins
 
-import io.ktor.server.application.*
-import io.ktor.server.websocket.*
-import io.ktor.websocket.*
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
+import io.ktor.server.websocket.WebSockets
+import io.ktor.websocket.pingPeriod
+import io.ktor.websocket.timeout
 import java.time.Duration
 
 fun Application.configureSockets() {
