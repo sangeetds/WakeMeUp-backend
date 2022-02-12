@@ -30,7 +30,8 @@ dependencies {
   implementation("io.ktor:ktor-server-tomcat:$ktorVersion")
   implementation("io.ktor:ktor-server-locations:$ktorVersion")
 
-
+  // Websockets
+  implementation("io.ktor:ktor-websockets:$ktorVersion")
 
   // Serialization
   implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
@@ -47,6 +48,8 @@ dependencies {
   implementation("io.insert-koin:koin-logger-slf4j:$koinVersion")
 
   implementation("com.apurebase:kgraphql-ktor:0.17.14")
+  implementation("io.ktor:ktor-server-core-jvm:2.0.0-beta-1")
+  implementation("io.ktor:ktor-server-websockets-jvm:2.0.0-beta-1")
 
   testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")

@@ -6,6 +6,7 @@ import `in`.wakemeup.plugins.configureLocations
 import `in`.wakemeup.plugins.configureMonitoring
 import `in`.wakemeup.plugins.configureRouting
 import `in`.wakemeup.plugins.configureSerialization
+import `in`.wakemeup.plugins.configureSockets
 import com.typesafe.config.ConfigFactory
 import io.ktor.server.application.port
 import io.ktor.server.config.HoconApplicationConfig
@@ -17,6 +18,7 @@ fun main() {
   embeddedServer(Tomcat, port = config.port, host = "0.0.0.0") {
     configureLocations()
     configureRouting()
+    configureSockets()
     configureHTTP()
     configureMonitoring()
     configureSerialization()
