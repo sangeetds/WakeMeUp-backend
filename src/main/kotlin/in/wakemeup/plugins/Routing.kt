@@ -5,7 +5,6 @@ import `in`.wakemeup.sockets.webSocketRouting
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
-import io.ktor.server.application.log
 import io.ktor.server.plugins.StatusPages
 import io.ktor.server.response.respond
 import io.ktor.server.routing.route

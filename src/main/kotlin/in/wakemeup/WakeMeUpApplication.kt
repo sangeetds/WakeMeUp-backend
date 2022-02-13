@@ -17,8 +17,8 @@ fun main() {
   val config = HoconApplicationConfig(ConfigFactory.load())
   embeddedServer(Tomcat, port = config.port, host = "0.0.0.0") {
     configureLocations()
-    configureRouting()
     configureSockets()
+    configureRouting()
     configureHTTP()
     configureMonitoring()
     configureSerialization()

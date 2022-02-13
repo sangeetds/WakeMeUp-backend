@@ -1,16 +1,16 @@
 package `in`.wakemeup.authentication
 
+import `in`.wakemeup.users.User
+import `in`.wakemeup.users.users
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.call
 import io.ktor.server.locations.Location
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.post
-import io.ktor.util.logging.Logger
-import jdk.nashorn.internal.runtime.regexp.joni.Config.log
 
 @Location("/authenticate")
-class Authenticate {
+private class Authenticate {
   @Location("/login")
   data class Login(val user: User)
 
@@ -23,7 +23,7 @@ fun Route.userRouting() {
     val log = call.application.environment.log
     val user = login.user
     log.info("Logging in user ${user.name}")
-    val existingUser = users.firstOrNull { it.id == user.id }
+    val existingUser = users[user.name]
 
     if (existingUser != null) {
       existingUser.loggedIn = true
@@ -38,7 +38,7 @@ fun Route.userRouting() {
     val log = call.application.environment.log
     val user = login.user
     log.info("Logging out user ${user.name}")
-    val existingUser = users.firstOrNull { it.id == user.id }
+    val existingUser = users[user.name]
 
     if (existingUser != null) {
       log.info("User ${user.name} logged out successfully")
